@@ -1,2 +1,6 @@
-﻿  main.cpp
-  Katalog Multimediow.vcxproj -> D:\Studia\Programy\PK projekt\Katalog Multimediow\Debug\Katalog Multimediow.exe
+﻿  Menu.cpp
+c:\programy\pkprojectsem3\katalog multimediow\katalog multimediow\menu.cpp(55): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  Generowanie kodu...
+  Pomijanie... (nie wykryto odpowiednich zmian)
+  main.cpp
+  Katalog Multimediow.vcxproj -> C:\Programy\PKProjectSem3\Katalog Multimediow\Debug\Katalog Multimediow.exe
