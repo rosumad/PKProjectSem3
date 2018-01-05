@@ -55,35 +55,72 @@ void Menu::show()
 {
 	system("cls");
 	cout << setw(this->windowSize) << this->name << endl;
+	if (this->fitOnOnePage())
+		this->showOnePage();
+	else
+		this->showMultiplePages();
+
+	cout << "Nacisnij ESC zeby wyjsc...";
+}
+
+bool Menu::fitOnOnePage()
+{
 	if ((int)this->elements.size() <= elemsPerPage)
+		return true;
+	else
+		return false;
+}
+
+void Menu::showOnePage()
+{
+	for (int i = 0; i < (int)this->elements.size(); i++)
 	{
-		for (int i = 0; i < (int)this->elements.size(); i++)
+		if (i == this->cursorPosition)
+			cout << CURSOR;
+		else
+			cout << "\t";
+
+		cout << i << ") " << this->elements[i] << endl;
+	}
+}
+
+void Menu::showMultiplePages()
+{
+	if (this->pageIsFull())
+	{
+		for (int i = 0; i < elemsPerPage; i++)
 		{
-			if (i == this->cursorPosition)
+			if ((i + menuPage * elemsPerPage) == this->cursorPosition)
 				cout << CURSOR;
 			else
 				cout << "\t";
 
-			cout << i << ") " << this->elements[i] << endl;
+			cout << i + menuPage * elemsPerPage << ") " << this->elements[i + menuPage * elemsPerPage] << endl;
 		}
+		cout << endl << "Uzyj strzalek w lewo oraz w prawo aby przejsc pomiedzy stronami menu." << endl;
 	}
 	else
-	{ 
-		if ((menuPage * elemsPerPage) < (int)this->elements.size())
+	{
+		int elemsOnLastPage = (int)this->elements.size() - menuPage * elemsPerPage;
+		for (int i = 0; i < elemsOnLastPage; i++)
 		{
-			for (int i = 0; i < elemsPerPage; i++) 
-			{
-				if ((i + menuPage*elemsPerPage) == this->cursorPosition)
-					cout << CURSOR;
-				else
-					cout << "\t";
+			if ((i + menuPage * elemsPerPage) == this->cursorPosition)
+				cout << CURSOR;
+			else
+				cout << "\t";
 
-				cout << i << ") " << this->elements[i+menuPage*elemsPerPage] << endl;  //  tu
-			}
-			cout << endl << "Uzyj strzalek w lewo oraz w prawo aby przejsc pomiedzy stronami menu." << endl;
+			cout << i + menuPage * elemsPerPage << ") " << this->elements[i + menuPage * elemsPerPage] << endl;
 		}
+		cout << endl << "Uzyj strzalek w lewo oraz w prawo aby przejsc pomiedzy stronami menu." << endl;
 	}
-	cout << "Nacisnij ESC zeby wyjsc...";
+}
+
+bool Menu::pageIsFull() 
+{
+	if (((int)this->elements.size() - menuPage * elemsPerPage) >= elemsPerPage)
+		return true;
+	else
+		return false;
 }
 
 int Menu::use() 
@@ -113,9 +150,37 @@ void Menu::moveCursor()
 			this->moveCursorDown();
 			break;
 
+		case KEY_ARROWLEFT:
+			this->movePageLeft();
+			break;
+
+		case KEY_ARROWRIGHT:
+			this->movePageRight();
+			break;
+
 		default:
 			break;
 	}
+}
+
+void Menu::movePageLeft() 
+{
+	if (this->menuPage == 0)
+		this->menuPage = (int)((int)this->elements.size() / elemsPerPage);
+	else
+		this->menuPage--;
+
+	this->cursorPosition = this->menuPage * elemsPerPage;
+}
+
+void Menu::movePageRight()
+{
+	if (this->menuPage == ((int)((int)this->elements.size() / elemsPerPage)))
+		this->menuPage = 0;
+	else
+		this->menuPage++;
+
+	this->cursorPosition = this->menuPage * elemsPerPage;
 }
 
 void Menu::moveCursorUp()
@@ -144,7 +209,7 @@ void Menu::handlePressedKey(int pressedKey)
 	{
 		for (int i = 0; i < (int)this->elements.size(); i++)
 		{
-			if (pressedKey == KEY_0 + i)
+			if (pressedKey == KEY_0 + (i%elemsPerPage))
 				this->choice = i;
 		}
 	}

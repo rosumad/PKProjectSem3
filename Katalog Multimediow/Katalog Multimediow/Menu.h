@@ -10,6 +10,8 @@ using namespace std;
 #define KEY_ARROWSPECIAL 224
 #define KEY_ARROWUP 72
 #define KEY_ARROWDOWN 80
+#define KEY_ARROWLEFT 75
+#define KEY_ARROWRIGHT 77
 #define KEY_ENTER 13
 #define KEY_0 48
 #define elemsPerPage 10
@@ -27,9 +29,15 @@ private:
 	int menuPage;
 
 	void show();
+	void showOnePage();
+	void showMultiplePages();
+	bool fitOnOnePage();
+	bool pageIsFull();
 	void moveCursor();
 	void moveCursorUp();
 	void moveCursorDown();
+	void movePageLeft();
+	void movePageRight();
 	void handlePressedKey(int pressedKey);
 	bool choiceMade();
 public:
