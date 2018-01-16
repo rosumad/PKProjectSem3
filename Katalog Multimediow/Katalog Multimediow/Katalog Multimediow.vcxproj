@@ -120,13 +120,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ClassicMusic.cpp" />
+    <ClCompile Include="Database.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Movie.cpp" />
+    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="PopMusic.cpp" />
     <ClCompile Include="Record.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClassicMusic.h" />
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Movie.h" />
+    <ClInclude Include="Person.h" />
+    <ClInclude Include="PopMusic.h" />
     <ClInclude Include="Record.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="import.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

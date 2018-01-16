@@ -2,11 +2,11 @@
 
 Record::Record()
 {
-	recordCount++;
+	count++;
 }
 
 
 Record::~Record()
 {
-	recordCount--;
-}
+	count--;
+}int Record::getCount(){	return count;}

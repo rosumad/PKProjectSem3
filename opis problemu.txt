@@ -5,6 +5,7 @@ powinien umo¿liwiaæ przechowywanie informacji o filmach, muzyce (z podzia³em na 
 grach komputerowych.
 
 Dla ka¿dego rodzaju utworu przechowywana jest inna informacja:
+
 Dla filmu: rok, re¿yser, tytu³, lista najwa¿niejszych aktorów (opcjonalnie).
 Dla muzyki klasycznej: rok, kompozytor, wykonawca, tytu³, nr katalogowy (opcjonalnie), lista solistów (opcjonalnie).
 Dla muzyki popularnej: rok, wykonawca, tytu³ utworu.

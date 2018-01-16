@@ -1,0 +1,4 @@
+FILM:1997:James,Cameron:Titanic:Leonardo,DiCaprio!Kate,Winslet!Billy,Zane
+KLASYKA:1831:Fryderyk,Chopin:Fryderyk,Chopin:Etiuda Rewolucyjna
+POP:1983:Michael,Jackson:Billie Jean
+GRA:1979:Atari Inc.:Asteroids

@@ -1,3 +1,9 @@
+//=================================
+// include guard
+#pragma once
+
+//=================================
+// included dependencies
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -6,6 +12,8 @@
 #include <conio.h>
 using namespace std;
 
+//=================================
+// defines
 #define	KEY_ESC	27
 #define KEY_ARROWSPECIAL 224
 #define KEY_ARROWUP 72
@@ -17,7 +25,8 @@ using namespace std;
 #define elemsPerPage 10
 #define CURSOR "    ->  "
 
-#pragma once
+//=================================
+// class code
 class Menu
 {
 private:
@@ -52,4 +61,3 @@ public:
 	
 	int use();
 };
-
