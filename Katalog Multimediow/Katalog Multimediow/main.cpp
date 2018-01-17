@@ -5,6 +5,7 @@
 #include "ClassicMusic.h"
 #include "PopMusic.h"
 #include "Game.h"
+#include "Database.h"
 #include <iostream>
 using namespace std;
 
@@ -15,8 +16,9 @@ int PopMusic::count = 0;
 int Game::count = 0;
 
 int main() {
+	Database database;
 
-	cout << "abc";
+	database.importFromFile("import.txt");
 
 	int x; cin >> x;
 	return 1;

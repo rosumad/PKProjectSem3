@@ -1,14 +1,7 @@
-﻿  main.cpp
-  Database.cpp
+﻿  Database.cpp
   Generowanie kodu...
+d:\studia\programy\pk projekt\katalog multimediow\katalog multimediow\database.cpp(44): warning C4715: "Database::importFromFile”: niewszystkie ścieżki kodu zwracają wartość
   Trwa kompilowanie...
-  Record.cpp
-  PopMusic.cpp
-  Movie.cpp
-  Game.cpp
-  ClassicMusic.cpp
+  main.cpp
   Generowanie kodu...
-  Pomijanie... (nie wykryto odpowiednich zmian)
-  Person.cpp
-  Menu.cpp
   Katalog Multimediow.vcxproj -> D:\Studia\Programy\PK projekt\Katalog Multimediow\Debug\Katalog Multimediow.exe
