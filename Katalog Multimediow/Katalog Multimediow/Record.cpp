@@ -2,11 +2,11 @@
 
 Record::Record()
 {
+	this->id = count;
 	count++;
 }
-
 
 Record::~Record()
 {
 	count--;
-}int Record::getCount(){	return count;}
+}

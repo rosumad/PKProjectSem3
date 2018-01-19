@@ -14,11 +14,9 @@ using namespace std;
 // class code
 class Person
 {
-private:
+public:
 	string firstName;
 	string lastName;
-
-public:
 	Person();
 	~Person();
 };

@@ -27,12 +27,15 @@ class PopMusic :
 	public Record
 {
 private:
-	static int count;
-	int id;
-	PopMusicData data;
+	static int count;	
 
 public:
+	PopMusicData data;
 	PopMusic();
+	PopMusic(const PopMusic&) { count++; }
 	~PopMusic();
+
+	static int getCount() { return count; };
+	int getId() { return this->id; }
 };
 

@@ -15,9 +15,13 @@ class Record
 private:
 	static int count;
 
+protected:
+	int id;
+
 public:
 	Record();
+	Record(const Record&) { count++; };
 	~Record();
 
-	static int getCount();
+	static int getCount() { return count; };
 };

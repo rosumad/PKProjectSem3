@@ -28,11 +28,14 @@ class Movie :
 {
 private:
 	static int count;
-	int id;
-	MovieData data;
 
 public:
+	MovieData data;
 	Movie();
+	Movie(const Movie&) { count++; }
 	~Movie();
+
+	static int getCount() { return count; };
+	int getId() { return this->id; }
 };
 

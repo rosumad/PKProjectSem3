@@ -30,11 +30,14 @@ class ClassicMusic :
 {
 private:
 	static int count;
-	int id;
-	ClassicMusicData data;
 
 public:
+	ClassicMusicData data;
 	ClassicMusic();
+	ClassicMusic(const ClassicMusic&) { count++; };
 	~ClassicMusic();
+
+	static int getCount() { return count; };
+	int getId() { return this->id; }
 };
 

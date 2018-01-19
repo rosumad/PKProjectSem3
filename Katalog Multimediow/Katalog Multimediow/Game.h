@@ -18,7 +18,7 @@ using namespace std;
 struct GameData
 {
 	int year;
-	Person director;
+	string director;
 	string title;
 	vector<string> addons;
 };
@@ -28,11 +28,13 @@ class Game :
 {
 private:
 	static int count;
-	int id;
-	GameData data;
-
+	
 public:
+	GameData data;
 	Game();
+	Game(const Game&) { count++; }
 	~Game();
-};
 
+	static int getCount() { return count; };
+	int getId() { return this->id; }
+};
