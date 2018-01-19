@@ -9,6 +9,7 @@
 // included dependencies
 #include "Record.h"
 #include "Person.h"
+#include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
@@ -32,10 +33,11 @@ private:
 public:
 	MovieData data;
 	Movie();
-	Movie(const Movie&) { count++; }
+	Movie(const Movie& movie) { count++; this->data = movie.data; }
 	~Movie();
 
 	static int getCount() { return count; };
 	int getId() { return this->id; }
+	void display();
 };
 

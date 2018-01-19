@@ -1,9 +1,11 @@
 Katalog multimediów
 
+ZROBIONE
 Napisaæ program pozwalaj¹cy na stworzenie prostej bazy danych do przechowywania informacji o multimediach. Program
 powinien umo¿liwiaæ przechowywanie informacji o filmach, muzyce (z podzia³em na klasykê i muzykê popularn¹) oraz
 grach komputerowych.
 
+ZROBIONE
 Dla ka¿dego rodzaju utworu przechowywana jest inna informacja:
 
 Dla filmu: rok, re¿yser, tytu³, lista najwa¿niejszych aktorów (opcjonalnie).
@@ -11,12 +13,18 @@ Dla muzyki klasycznej: rok, kompozytor, wykonawca, tytu³, nr katalogowy (opcjona
 Dla muzyki popularnej: rok, wykonawca, tytu³ utworu.
 Dla gier komputerowych: rok, producent, tytu³, lista dodatków (opcjonalnie).
 
+ZROBIONE
 Program powinien wczytywaæ dane z pliku tekstowego. W pliku tym, ka¿dy wiersz stanowi jeden kompletny zestaw
 informacji dotycz¹cy obiektu przechowywanego w bazie (filmu, muzyki klasycznej, muzyki popularnej lub gry). Nale¿y
 zaproponowaæ format pliku wejœciowego. Program musi poprawnie wczytywaæ dane z pliku przygotowanego zgodnie z
 formatem. Dopuszczalne jest kodowanie typu informacji na dodatkowym polu w pliku. Po wczytaniu pliku program
 powinien podaæ krótk¹ informacjê podsumowuj¹c¹ (liczba wczytanych rekordów, liczby rekordów w ka¿dej z kategorii)
 
-Program powinien umo¿liwiaæ przeszukiwanie bazy zgodnie z przyjêtym kryterium: wed³ug wykonawcy, wed³ug re¿ysera,
-wed³ug tytu³u oraz zakresu lat. Dodatkowo mo¿na ograniczyæ wyszukiwanie do jednego typu wpisów. Rezultat
+
+Program powinien umo¿liwiaæ przeszukiwanie bazy zgodnie z przyjêtym kryterium: 
+wed³ug wykonawcy,
+wed³ug re¿ysera,
+wed³ug tytu³u  
+zakresu lat. 
+Dodatkowo mo¿na ograniczyæ wyszukiwanie do jednego typu wpisów. Rezultat
 wyszukiwania powinien byæ wyœwietlany jako lista. Ka¿da z pozycji musi zawieraæ komplet informacji dotycz¹cy jej typu.

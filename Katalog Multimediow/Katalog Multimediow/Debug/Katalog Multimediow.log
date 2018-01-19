@@ -1,3 +1,3 @@
-﻿  Database.cpp
-d:\studia\programy\pk projekt\katalog multimediow\katalog multimediow\database.cpp(66): warning C4715: "Database::addRecord”: niewszystkie ścieżki kodu zwracają wartość
+﻿  main.cpp
+d:\studia\programy\pk projekt\katalog multimediow\katalog multimediow\main.cpp(100): warning C4715: "searchMenu”: niewszystkie ścieżki kodu zwracają wartość
   Katalog Multimediow.vcxproj -> D:\Studia\Programy\PK projekt\Katalog Multimediow\Debug\Katalog Multimediow.exe

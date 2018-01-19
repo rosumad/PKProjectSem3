@@ -11,6 +11,7 @@
 #include "Person.h"
 #include <string>
 #include <vector>
+#include <iostream>
 using namespace std;
 
 //=================================
@@ -32,10 +33,11 @@ private:
 public:
 	PopMusicData data;
 	PopMusic();
-	PopMusic(const PopMusic&) { count++; }
+	PopMusic(const PopMusic& pop) { count++; this->data = pop.data; }
 	~PopMusic();
 
 	static int getCount() { return count; };
 	int getId() { return this->id; }
+	void display();
 };
 

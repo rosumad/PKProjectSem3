@@ -60,7 +60,7 @@ void Menu::show()
 	else
 		this->showMultiplePages();
 
-	cout << "Nacisnij ESC zeby wyjsc...";
+	cout << endl << "Nacisnij ESC zeby wyjsc...";
 }
 
 bool Menu::fitOnOnePage()

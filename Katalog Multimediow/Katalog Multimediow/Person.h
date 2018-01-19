@@ -8,6 +8,7 @@
 //=================================
 // included dependencies
 #include <string>
+#include <iostream>
 using namespace std;
 
 //=================================
@@ -19,4 +20,7 @@ public:
 	string lastName;
 	Person();
 	~Person();
+
+	bool operator==(const Person& p);
+	void display();
 };

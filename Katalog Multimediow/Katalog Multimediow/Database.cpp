@@ -21,7 +21,7 @@ vector<string> split(string strToSplit, char delimeter)
 	return attributes;
 }
 
-Database::RecordType Database::getRecordType(string type)
+RecordType Database::getRecordType(string type)
 {
 	RecordType typeEnum;
 	if (type == RECORDTYPE_MOVIE)
@@ -44,24 +44,24 @@ int Database::addRecord(string record)
 	RecordType recordType = getRecordType(attributes[0]);
 	switch (recordType) 
 	{
-		case MOVIE:
-			this->addMovie(attributes);
-			break;
-		case CLASSICMUSIC:
-			this->addClassicMusic(attributes);
-			break;
-		case POPMUSIC:
-			this->addPopMusic(attributes);
-			break;
-		case GAME:
-			this->addGame(attributes);
-			break;
-		case UNIDENTIFIED:
-			return UNIDENTIFIED_RECORD_TYPE_ERROR;
-			break;
-		default:
-			return UNIDENTIFIED_RECORD_TYPE_ERROR;
-			break;
+	case MOVIE:
+		this->addMovie(attributes);
+		break;
+	case CLASSICMUSIC:
+		this->addClassicMusic(attributes);
+		break;
+	case POPMUSIC:
+		this->addPopMusic(attributes);
+		break;
+	case GAME:
+		this->addGame(attributes);
+		break;
+	case UNIDENTIFIED:
+		return UNIDENTIFIED_RECORD_TYPE_ERROR;
+		break;
+	default:
+		return UNIDENTIFIED_RECORD_TYPE_ERROR;
+		break;
 	}
 }
 
@@ -190,5 +190,243 @@ int Database::importFromFile(string path)
 	cout << "\tDodano " << ClassicMusic::getCount() - classicCount << " rekordow typu muzyka klasyczna." << endl;
 	cout << "\tDodano " << PopMusic::getCount() - popCount << " rekordow typu muzyka popularna." << endl;
 	cout << "\tDodano " << Game::getCount() - gameCount << " rekordow typu gra." << endl;
+	cout << endl << "Ogolem rekordow w bazie: " << Record::getCount() << "." << endl;
+	cout << "\tW bazie jest " << Movie::getCount() << " rekordow typu film." << endl;
+	cout << "\tW bazie jest " << ClassicMusic::getCount() << " rekordow typu muzyka klasyczna." << endl;
+	cout << "\tW bazie jest " << PopMusic::getCount() << " rekordow typu muzyka popularna." << endl;
+	cout << "\tW bazie jest " << Game::getCount() << " rekordow typu gra." << endl;
+	Sleep(3000);
+	return 0;
+}
+
+bool isInYearRange(int yearToCheck, string yearRange) 
+{
+	vector<string> range = split(yearRange, YEAR_DELIMETER);
+	int rangeMin = stoi(range[0]);
+	int rangeMax = stoi(range[1]);
+
+	if ((yearToCheck <= rangeMax) && (yearToCheck >= rangeMin))
+		return true;
+	else
+		return false;
+}
+
+vector<Record*> Database::searchMovies(int attrType, string attrValue)
+{
+	vector<Record*> result;
+	switch (attrType) 
+	{
+	case ATTRTYPE_PERFORMER:
+		return result;
+		break;
+	case ATTRTYPE_DIRECTOR:
+	{
+		vector<Person> director = createPersons(attrValue);
+		for (int i = 0; i < (int)movies.size(); i++)
+		{
+			if (movies[i].data.director == director[0])
+				result.push_back(&movies[i]);
+		}
+		return result;
+		break;
+	}
+	case ATTRTYPE_TITLE:
+	{
+		string title;
+		title = attrValue;
+		for (int i = 0; i < (int)movies.size(); i++)
+		{
+			if (movies[i].data.title == title)
+				result.push_back(&movies[i]);
+		}
+		return result;
+		break;
+	}
+	case ATTRTYPE_YEARRANGE:
+		for (int i = 0; i < (int)movies.size(); i++)
+		{
+			if (isInYearRange(movies[i].data.year, attrValue))
+				result.push_back(&movies[i]);
+		}
+		return result;
+		break;
+	default:
+		return result;
+	}
+}
+
+vector<Record*> Database::searchClassicMusic(int attrType, string attrValue)
+{
+	vector<Record*> result;
+	switch (attrType)
+	{
+	case ATTRTYPE_PERFORMER:
+	{
+		vector<Person> performer = createPersons(attrValue);
+		for (int i = 0; i < (int)classicTracks.size(); i++)
+		{
+			if (classicTracks[i].data.performer == performer[0])
+				result.push_back(&classicTracks[i]);
+		}
+		return result;
+		break;
+	}
+	case ATTRTYPE_DIRECTOR:
+		return result;
+		break;
+	case ATTRTYPE_TITLE:
+	{
+		string title = attrValue;
+		for (int i = 0; i < (int)classicTracks.size(); i++)
+		{
+			if (classicTracks[i].data.title == title)
+				result.push_back(&classicTracks[i]);
+		}
+		return result;
+		break;
+	}
+	case ATTRTYPE_YEARRANGE:
+		for (int i = 0; i < (int)classicTracks.size(); i++)
+		{
+			if (isInYearRange(classicTracks[i].data.year, attrValue))
+				result.push_back(&classicTracks[i]);
+		}
+		return result;
+		break;
+	default:
+		return result;
+	}
+}
+
+vector<Record*> Database::searchPopMusic(int attrType, string attrValue)
+{
+	vector<Record*> result;
+	switch (attrType)
+	{
+	case ATTRTYPE_PERFORMER:
+	{
+		vector<Person> performer = createPersons(attrValue);
+		for (int i = 0; i < (int)popTracks.size(); i++)
+		{
+			if (popTracks[i].data.performer == performer[0])
+				result.push_back(&popTracks[i]);
+		}
+		return result;
+		break;
+	}
+	case ATTRTYPE_DIRECTOR:
+		return result;
+		break;
+	case ATTRTYPE_TITLE:
+	{
+		string title = attrValue;
+		for (int i = 0; i < (int)popTracks.size(); i++)
+		{
+			if (popTracks[i].data.title == title)
+				result.push_back(&popTracks[i]);
+		}
+		return result;
+		break;
+	}
+	case ATTRTYPE_YEARRANGE:
+		for (int i = 0; i < (int)popTracks.size(); i++)
+		{
+			if (isInYearRange(popTracks[i].data.year, attrValue))
+				result.push_back(&popTracks[i]);
+		}
+		return result;
+		break;
+	default:
+		return result;
+	}
+}
+
+vector<Record*> Database::searchGames(int attrType, string attrValue)
+{
+	vector<Record*> result;
+	switch (attrType)
+	{
+	case ATTRTYPE_PERFORMER:
+		return result;
+		break;
+	case ATTRTYPE_DIRECTOR:
+	{
+		string director = attrValue;
+		for (int i = 0; i < (int)games.size(); i++)
+		{
+			if (games[i].data.director == director)
+				result.push_back(&games[i]);
+		}
+		return result;
+		break;
+	}
+	case ATTRTYPE_TITLE:
+	{
+		string title = attrValue;
+		for (int i = 0; i < (int)games.size(); i++)
+		{
+			if (games[i].data.title == title)
+				result.push_back(&games[i]);
+		}
+		return result;
+		break;
+	}
+	case ATTRTYPE_YEARRANGE:
+		for (int i = 0; i < (int)games.size(); i++)
+		{
+			if (isInYearRange(games[i].data.year, attrValue))
+				result.push_back(&games[i]);
+		}
+		return result;
+		break;
+	default:
+		return result;
+	}
+}
+
+vector<Record*> Database::searchRecords(RecordType type, int attrType, string attrValue) 
+{
+	vector<Record*> result;
+	switch (type)
+	{
+	case MOVIE:
+		result = searchMovies(attrType, attrValue);
+		break;
+	case CLASSICMUSIC:
+		result = searchClassicMusic(attrType, attrValue);
+		break;
+	case POPMUSIC:
+		result = searchPopMusic(attrType, attrValue);
+		break;
+	case GAME:
+		result = searchGames(attrType, attrValue);
+		break;
+	case ALL:
+	{
+		vector<Record*> tempResult;
+		result = searchMovies(attrType, attrValue);
+		tempResult = searchClassicMusic(attrType, attrValue);
+		result.insert(result.end(), tempResult.begin(), tempResult.end());
+
+		tempResult = searchPopMusic(attrType, attrValue);
+		result.insert(result.end(), tempResult.begin(), tempResult.end());
+
+		tempResult = searchGames(attrType, attrValue);
+		result.insert(result.end(), tempResult.begin(), tempResult.end());
+		break;
+	}
+	}
+	return result;
+}
+
+int Database::displayRecords(RecordType type, int typeOfAttr, string attrValue) 
+{
+	vector<Record*> records = searchRecords(type, typeOfAttr, attrValue);
+
+	system("cls");
+	for (int i = 0; i < records.size(); i++)
+		records[i]->display();
+
+	Sleep(2000);
 	return 0;
 }

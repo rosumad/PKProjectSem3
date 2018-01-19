@@ -23,5 +23,6 @@ public:
 	Record(const Record&) { count++; };
 	~Record();
 
+	virtual void display() {};
 	static int getCount() { return count; };
 };

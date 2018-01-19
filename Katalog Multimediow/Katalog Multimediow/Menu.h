@@ -24,6 +24,7 @@ using namespace std;
 #define KEY_0 48
 #define elemsPerPage 10
 #define CURSOR "    ->  "
+#define CHOICE_ESCAPE -1
 
 //=================================
 // class code

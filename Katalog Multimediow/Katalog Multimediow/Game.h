@@ -11,6 +11,7 @@
 #include "Person.h"
 #include <string>
 #include <vector>
+#include <iostream>
 using namespace std;
 
 //=================================
@@ -32,9 +33,10 @@ private:
 public:
 	GameData data;
 	Game();
-	Game(const Game&) { count++; }
+	Game(const Game& game) { count++; this->data = game.data; }
 	~Game();
 
 	static int getCount() { return count; };
 	int getId() { return this->id; }
+	void display();
 };
